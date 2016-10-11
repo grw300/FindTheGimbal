@@ -5,14 +5,18 @@ using CoreLocation;
 using CoreBluetooth;
 using Foundation;
 using System.Linq;
+using Xamarin.Forms;
 
-namespace FindTheGimbal
+[assembly: Dependency(typeof(FindTheGimbal.iOS.GimbalListener))]
+
+namespace FindTheGimbal.iOS
 {
-    public class FindTheGimbal
+
+	public class GimbalListener: IGimbalListener
     {
         /* Figure out a way to get these from the Portable Project */
-        static readonly string uuid = "E4C8A4FC-F68B-470D-959F-29382AF72CE7";
-        static readonly string gimbalId = "Gimbal";
+        static readonly string uuid = "487C659C-1FE2-4D2A-A289-130BBD7E534F";
+        static readonly string gimbalId = "ER Room 1";
 
         CLLocationManager locationManager;
         CLProximity previousProximity;
@@ -21,8 +25,7 @@ namespace FindTheGimbal
         public event locationNotification FoundGimbal;
         public delegate void locationNotification(string body);
 
-        public event updateDisplay UpdateDisplay;
-        public delegate void updateDisplay(string text);
+		public event EventHandler UpdateDisplay;
 
         public void listen()
         {
@@ -54,16 +57,16 @@ namespace FindTheGimbal
                     switch ((CLProximity)beacon.Proximity)
                     {
                         case CLProximity.Immediate:
-                            UpdateDisplay("You found the gimbal!");
+							OnUpdateDisplay(new GimbalEventArgs("You found the gimbal!", Color.Green));
                             break;
                         case CLProximity.Near:
-                            UpdateDisplay("You're near the gimbal!");
+							OnUpdateDisplay(new GimbalEventArgs("You're near the gimbal!", Color.Yellow));
                             break;
                         case CLProximity.Far:
-                            UpdateDisplay("You're far from the gimbal!");
+							OnUpdateDisplay(new GimbalEventArgs("You're far from the gimbal!", Color.Red));
                             break;
                         case CLProximity.Unknown:
-                            UpdateDisplay("Got no idea where the gimbal is!");
+							OnUpdateDisplay(new GimbalEventArgs("Got no idea where the gimbal is!", Color.Gray));
                             break;
                     }
 
@@ -77,5 +80,12 @@ namespace FindTheGimbal
 
         }
 
-    }
+		protected virtual void OnUpdateDisplay(EventArgs e)
+		{
+			if (UpdateDisplay != null)
+			{
+				UpdateDisplay(this, e);
+			}
+		}
+}
 }

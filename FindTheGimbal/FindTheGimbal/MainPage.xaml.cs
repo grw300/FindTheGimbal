@@ -12,6 +12,17 @@ namespace FindTheGimbal
         public MainPage()
         {
             InitializeComponent();
+
+			var gimbalListener = DependencyService.Get<IGimbalListener>();
+
+			gimbalListener.UpdateDisplay += (object sender, EventArgs e) =>
+			{
+				var gimbalEvent = (GimbalEventArgs) e;
+				this.gimbalStatus.Text = gimbalEvent.message;
+				this.BackgroundColor = gimbalEvent.color;
+			};
+
+			gimbalListener.listen();
         }
     }
 }

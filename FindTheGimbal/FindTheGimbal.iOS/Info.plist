@@ -59,5 +59,7 @@
 	</array>
 	<key>CFBundleName</key>
 	<string>FindTheGimbal</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Let&apos;s find some Gimbals!</string>
 </dict>
 </plist>
