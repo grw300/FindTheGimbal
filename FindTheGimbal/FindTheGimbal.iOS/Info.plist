@@ -25,7 +25,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>FindTheGimbal</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.FindTheGimbal</string>
+	<string>com.GregWill.FindTheGimbal</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
@@ -57,5 +57,7 @@
 		<string>bluetooth-peripheral</string>
 		<string>remote-notification</string>
 	</array>
+	<key>CFBundleName</key>
+	<string>FindTheGimbal</string>
 </dict>
 </plist>
