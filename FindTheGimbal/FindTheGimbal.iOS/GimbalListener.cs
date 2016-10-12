@@ -25,7 +25,7 @@ namespace FindTheGimbal.iOS
         public event locationNotification FoundGimbal;
         public delegate void locationNotification(string body);
 
-		public event EventHandler UpdateDisplay;
+		public event EventHandler<GimbalEventArgs> UpdateDisplay;
 
         public void listen()
         {
@@ -80,12 +80,9 @@ namespace FindTheGimbal.iOS
 
         }
 
-		protected virtual void OnUpdateDisplay(EventArgs e)
+		protected virtual void OnUpdateDisplay(GimbalEventArgs e)
 		{
-			if (UpdateDisplay != null)
-			{
-				UpdateDisplay(this, e);
-			}
-		}
+            UpdateDisplay?.Invoke(this, e);
+        }
 }
 }

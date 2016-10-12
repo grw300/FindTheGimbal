@@ -17,29 +17,19 @@ using Xamarin.Forms;
 
 namespace FindTheGimbal.Droid
 {
-	public class GimbalListener: IGimbalListener
+	public class GimbalListener: IGimbalListener, IBeaconConsumer
     {
-		event EventHandler IGimbalListener.UpdateDisplay
-		{
-			add
-			{
-				throw new NotImplementedException();
-			}
+        BeaconManager beaconManager;
 
-			remove
-			{
-				throw new NotImplementedException();
-			}
-		}
+        public event EventHandler<GimbalEventArgs> UpdateDisplay;
 
-		public void listen() 
+        public void listen() 
 		{
-		
-		}
+            beaconManager = BeaconManager.GetInstanceForApplication(Android.App.Application.Context);
+            beaconManager.BeaconParsers.Add(new BeaconParser().
+                                                SetBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));
 
-		void IGimbalListener.listen()
-		{
-			throw new NotImplementedException();
-		}
-	}
+            beaconManager.Bind(this);
+        }
+    }
 }

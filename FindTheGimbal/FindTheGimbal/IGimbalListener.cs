@@ -4,6 +4,6 @@ namespace FindTheGimbal
 	public interface IGimbalListener
 	{
 		void listen();
-		event EventHandler UpdateDisplay;
+		event EventHandler<GimbalEventArgs> UpdateDisplay;
 	}
 }

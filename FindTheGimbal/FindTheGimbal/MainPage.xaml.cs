@@ -15,11 +15,10 @@ namespace FindTheGimbal
 
 			var gimbalListener = DependencyService.Get<IGimbalListener>();
 
-			gimbalListener.UpdateDisplay += (object sender, EventArgs e) =>
+			gimbalListener.UpdateDisplay += (object sender, GimbalEventArgs e) =>
 			{
-				var gimbalEvent = (GimbalEventArgs) e;
-				this.gimbalStatus.Text = gimbalEvent.message;
-				this.BackgroundColor = gimbalEvent.color;
+				this.gimbalStatus.Text = e.message;
+				this.BackgroundColor = e.color;
 			};
 
 			gimbalListener.listen();
