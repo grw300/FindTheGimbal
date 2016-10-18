@@ -9,11 +9,12 @@ namespace FindTheGimbal
 {
     public partial class MainPage : ContentPage
     {
+        IGimbalListener gimbalListener;
         public MainPage()
         {
             InitializeComponent();
 
-			var gimbalListener = DependencyService.Get<IGimbalListener>();
+			gimbalListener = DependencyService.Get<IGimbalListener>();
 
 			gimbalListener.UpdateDisplay += (object sender, GimbalEventArgs e) =>
 			{
@@ -21,7 +22,8 @@ namespace FindTheGimbal
 				this.BackgroundColor = e.color;
 			};
 
-			gimbalListener.listen();
+            gimbalListener.listen();
         }
+
     }
 }

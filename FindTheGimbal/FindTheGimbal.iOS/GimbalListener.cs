@@ -81,5 +81,10 @@ namespace FindTheGimbal.iOS
 		{
 			UpdateDisplay?.Invoke(this, e);
 		}
-	}
+
+        public void StartMonitoring()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
