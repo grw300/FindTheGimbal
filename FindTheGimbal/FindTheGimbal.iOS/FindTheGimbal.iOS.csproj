@@ -50,7 +50,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>90eab745-5968-443e-8165-5606a81627c3</CodesignProvision>
+    <CodesignProvision>c1f7e2f2-d665-498e-9db7-2d97176f4077</CodesignProvision>
     <MtouchSdkVersion>
     </MtouchSdkVersion>
   </PropertyGroup>
