@@ -9,7 +9,7 @@ namespace FindTheGimbal
 {
     public partial class MainPage : ContentPage
     {
-        IGimbalListener gimbalListener;
+        public IGimbalListener gimbalListener;
         public MainPage()
         {
             InitializeComponent();
@@ -34,9 +34,7 @@ namespace FindTheGimbal
             //    gimbalListener.speak();
             //};
             
-        }
-
-        
+        }        
 
         //protected override void OnAppearing()
         //{

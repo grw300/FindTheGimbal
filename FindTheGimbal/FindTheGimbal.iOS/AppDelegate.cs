@@ -28,6 +28,5 @@ namespace FindTheGimbal.iOS
             return base.FinishedLaunching(app, options);
         }
 
-        
     }
 }
